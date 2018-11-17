@@ -113,17 +113,18 @@ module.exports = function (app) {
 
      //Gift Routes 
      // GET route for getting all of the gifts data
-     app.get("/api/gifts/", function (req, res) {
-          db.Gift.findAll({})
+     app.get("/giftsList/", function (req, res) {
+          db.giftsList.findAll({})
                .then(function (dbGift) {
+                    console.log("?")
                     res.json(dbGift);
                });
      });
 
      // POST route for saving a new gift 
-     app.post("/api/gifts", function (req, res) {
+     app.post("/giftsList", function (req, res) {
           console.log(req.body);
-          db.Gift.create({
+          db.giftsList.create({
                isBought: req.body.isBought,
                name: req.body.name,
                budget: req.body.budget
@@ -134,8 +135,8 @@ module.exports = function (app) {
      });
 
      // DELETE route for deleting gifts
-     app.delete("/api/gifts/:id", function (req, res) {
-          db.Gift.destroy({
+     app.delete("/giftsList/:id", function (req, res) {
+          db.giftsList.destroy({
                where: {
                     id: req.params.id
                }
@@ -146,8 +147,8 @@ module.exports = function (app) {
      });
 
      // PUT route for updating gifts
-     app.put("/api/gifts", function (req, res) {
-          db.Gift.update(req.body,
+     app.put("/giftsList", function (req, res) {
+          db.giftsList.update(req.body,
                {
                     where: {
                          id: req.body.id

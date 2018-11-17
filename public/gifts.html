@@ -64,8 +64,6 @@
 
      <script>
 
-
-
           //delete all
           const clearGifts = () => {
                fetch('/giftsList', { method: 'DELETE' })
@@ -87,6 +85,7 @@
                }).then(r => {
                     document.querySelector('#giftName').value = ''
                     document.querySelector('#giftBudget').value = ''
+                    
                     getGifts()
                }).catch(e => console.log(e))
           }
